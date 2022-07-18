@@ -1,7 +1,22 @@
 import * as React from 'react';
+
 import clsxm from '@/lib/clsxm';
 
+import Layout from '@/components/layout/Layout';
+import ArrowLink from '@/components/links/ArrowLink';
+import ButtonLink from '@/components/links/ButtonLink';
+import UnderlineLink from '@/components/links/UnderlineLink';
+import UnstyledLink from '@/components/links/UnstyledLink';
+
+type Color = typeof colorList[number];
+
 export default function NavBar() {
+
+    const [mode, setMode] = React.useState<'dark' | 'light'>('light');
+    const [color, setColor] = React.useState<Color>('sky');
+    function toggleMode() {
+        return mode === 'dark' ? setMode('light') : setMode('dark');
+    }
     return (
         <>
             <nav className="bg-white border-gray-200 px-2 sm:px-4 py-2.5 rounded dark:bg-gray-900">
@@ -44,19 +59,49 @@ export default function NavBar() {
                     <div className="hidden justify-between items-center w-full md:flex md:w-auto md:order-1" id="mobile-menu-2">
                         <ul className="flex flex-col mt-4 md:flex-row md:space-x-8 md:mt-0 md:text-sm md:font-medium">
                             <li>
-                                <a href="#" className="block py-2 pr-4 pl-3 text-white bg-blue-700 rounded md:bg-transparent md:text-blue-700 md:p-0 dark:text-white" aria-current="page">Home</a>
+                                <ButtonLink
+                                    variant='ghost'
+                                    isDarkBg={mode === 'dark'}
+                                    href='#'
+                                >
+                                    Home
+                                </ButtonLink>
                             </li>
                             <li>
-                                <a href="#" className="block py-2 pr-4 pl-3 text-gray-700 border-b border-gray-100 hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">About</a>
+                                <ButtonLink
+                                    variant='ghost'
+                                    isDarkBg={mode === 'dark'}
+                                    href='#'
+                                >
+                                    About
+                                </ButtonLink>
                             </li>
                             <li>
-                                <a href="#" className="block py-2 pr-4 pl-3 text-gray-700 border-b border-gray-100 hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">Services</a>
+                                <ButtonLink
+                                    variant='ghost'
+                                    isDarkBg={mode === 'dark'}
+                                    href='#'
+                                >
+                                    Services
+                                </ButtonLink>
                             </li>
                             <li>
-                                <a href="#" className="block py-2 pr-4 pl-3 text-gray-700 border-b border-gray-100 hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">Pricing</a>
+                                <ButtonLink
+                                    variant='ghost'
+                                    isDarkBg={mode === 'dark'}
+                                    href='#'
+                                >
+                                    Pricing
+                                </ButtonLink>
                             </li>
                             <li>
-                                <a href="#" className="block py-2 pr-4 pl-3 text-gray-700 border-b border-gray-100 hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">Contact</a>
+                                <ButtonLink
+                                    variant='ghost'
+                                    isDarkBg={mode === 'dark'}
+                                    href='#'
+                                >
+                                    Contact
+                                </ButtonLink>
                             </li>
                         </ul>
                     </div>
@@ -65,3 +110,28 @@ export default function NavBar() {
         </>
     )
 }
+
+const colorList = [
+    'rose',
+    'pink',
+    'fuchsia',
+    'purple',
+    'violet',
+    'indigo',
+    'blue',
+    'sky',
+    'cyan',
+    'teal',
+    'emerald',
+    'green',
+    'lime',
+    'yellow',
+    'amber',
+    'orange',
+    'red',
+    'slate',
+    'gray',
+    'zinc',
+    'neutral',
+    'stone',
+] as const;
