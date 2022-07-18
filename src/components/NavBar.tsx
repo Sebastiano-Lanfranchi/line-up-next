@@ -1,22 +1,17 @@
 import * as React from 'react';
 
-import clsxm from '@/lib/clsxm';
-
-import Layout from '@/components/layout/Layout';
-import ArrowLink from '@/components/links/ArrowLink';
 import ButtonLink from '@/components/links/ButtonLink';
-import UnderlineLink from '@/components/links/UnderlineLink';
-import UnstyledLink from '@/components/links/UnstyledLink';
+import  useStore  from '../pages/store';
 
 type Color = typeof colorList[number];
 
 export default function NavBar() {
+    
 
-    const [mode, setMode] = React.useState<'dark' | 'light'>('light');
-    const [color, setColor] = React.useState<Color>('sky');
-    function toggleMode() {
-        return mode === 'dark' ? setMode('light') : setMode('dark');
-    }
+    const mode = useStore((state) => state.mode);
+    const color = useStore((state) => state.color)
+    const textColor = mode === 'dark' ? 'text-gray-300' : 'text-gray-600';
+
     return (
         <>
             <nav className="bg-white border-gray-200 px-2 sm:px-4 py-2.5 rounded dark:bg-gray-900">
