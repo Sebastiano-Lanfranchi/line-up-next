@@ -7,7 +7,7 @@ import Seo from '@/components/Seo';
 
 export default function NotFoundPage() {
   return (
-    <Layout>
+    <>
       <Seo templateTitle='Not Found' />
 
       <main>
@@ -24,6 +24,6 @@ export default function NotFoundPage() {
           </div>
         </section>
       </main>
-    </Layout>
+    </>
   );
 }
