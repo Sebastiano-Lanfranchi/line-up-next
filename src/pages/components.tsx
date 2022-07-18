@@ -13,16 +13,20 @@ import NextImage from '@/components/NextImage';
 import Seo from '@/components/Seo';
 import Skeleton from '@/components/Skeleton';
 
+import  useStore  from './store';
+
 type Color = typeof colorList[number];
 
 export default function ComponentsPage() {
   const [mode, setMode] = React.useState<'dark' | 'light'>('light');
   const [color, setColor] = React.useState<Color>('sky');
   function toggleMode() {
+
     return mode === 'dark' ? setMode('light') : setMode('dark');
   }
-
   const textColor = mode === 'dark' ? 'text-gray-300' : 'text-gray-600';
+  useStore().set('mode', mode);
+  useStore().set('color', color);
 
   return (
     <Layout>
